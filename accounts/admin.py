@@ -13,4 +13,4 @@ class ImageAdmin(admin.ModelAdmin):
 admin.site.register(CampusDetail, ImageAdmin)
 admin.site.register(CampusCourseDepart)
 admin.site.register(MasterCourse)
-admin.site.register(MasterDepart)
+admin.site.register(MasterDepartment)
