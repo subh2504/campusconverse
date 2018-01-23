@@ -1,7 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-
 # Create your models here.
 from django.utils.safestring import mark_safe
 
@@ -21,6 +20,7 @@ class CampusDetail(models.Model):
 
     def image_tag(self):
         return mark_safe('<img src="/media/%s" />' % (self.campus_logo))
+
     image_tag.short_description = 'Image'
     image_tag.allow_tags = True
 
@@ -60,4 +60,7 @@ class CampusCourseDepart(models.Model):
     department = models.ForeignKey(MasterDepartment, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.college.college_name + " " + self.course.course_name + " " + self.department.depart_name
+        return self.campus.campus_name + " " + self.course.course_name + " " + self.department.depart_name
+
+    class Meta:
+        unique_together = ('campus', 'course', 'department',)
